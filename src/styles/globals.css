@@ -1,6 +1,11 @@
 /* Import Arabic Font - Cairo */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap');
 
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @custom-variant dark (&:is(.dark *));
 
 :root {

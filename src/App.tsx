@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './components/AuthContext';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { HomePage } from './components/HomePage';
 import { LoginForm } from './components/LoginForm';
 import { Dashboard } from './components/Dashboard';
@@ -239,11 +240,13 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <AppContent />
-        <Toaster position="top-center" richColors />
-      </AuthProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppContent />
+          <Toaster position="top-center" richColors />
+        </AuthProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }

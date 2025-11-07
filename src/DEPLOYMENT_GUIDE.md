@@ -1,52 +1,23 @@
-# 🚀 دليل رفع المشروع على GitHub و Vercel و Supabase
+# 🚀 دليل نشر نظام إدارة مشاريع الطرق السعودية
 
-<div dir="rtl">
+## 📋 المتطلبات الأساسية
 
-## 📋 المحتويات
-1. [الإعداد الأولي](#الإعداد-الأولي)
-2. [رفع على GitHub](#رفع-على-github)
-3. [إعداد Supabase](#إعداد-supabase)
-4. [رفع على Vercel](#رفع-على-vercel)
-5. [الاختبار النهائي](#الاختبار-النهائي)
-
----
-
-## 1️⃣ الإعداد الأولي
-
-### المتطلبات:
+قبل البدء، تأكد من وجود:
 - ✅ حساب GitHub
-- ✅ حساب Supabase (مجاني)
 - ✅ حساب Vercel (مجاني)
+- ✅ حساب Supabase (مجاني)
 - ✅ Git مثبت على جهازك
-- ✅ Node.js 18+ مثبت
-
-### التحقق من التثبيت:
-```bash
-git --version
-node --version
-npm --version
-```
 
 ---
 
-## 2️⃣ رفع على GitHub
+## 🗂️ الخطوة 1: تجهيز المشروع على GitHub
 
-### الخطوة 1: إنشاء Repository
-
-1. افتح [GitHub.com](https://github.com)
-2. اضغط على **"New repository"**
-3. املأ البيانات:
-   - **Repository name**: `saudi-roads-system`
-   - **Description**: `نظام إدارة مشاريع الطرق السعودية`
-   - **Visibility**: Private أو Public (حسب اختيارك)
-   - ❌ **لا** تضع علامة على "Initialize with README"
-4. اضغط **"Create repository"**
-
-### الخطوة 2: رفع الكود
-
-افتح Terminal في مجلد المشروع:
+### 1.1 إنشاء Repository جديد
 
 ```bash
+# افتح Terminal في مجلد المشروع
+cd /path/to/your/project
+
 # تهيئة Git (إذا لم يكن مهيأ)
 git init
 
@@ -54,374 +25,514 @@ git init
 git add .
 
 # عمل Commit
-git commit -m "Initial commit: Saudi Roads Management System v1.0"
+git commit -m "Initial commit - Saudi Roads Management System"
 
-# تسمية الـ branch الرئيسي
+# إنشاء branch رئيسي
 git branch -M main
+```
 
-# ربط المشروع بـ GitHub
-git remote add origin https://github.com/YOUR_USERNAME/saudi-roads-system.git
+### 1.2 رفع المشروع إلى GitHub
+
+```bash
+# اذهب إلى github.com وأنشئ repository جديد
+# اسم Repository المقترح: saudi-roads-management
+
+# ربط المشروع مع GitHub
+git remote add origin https://github.com/YOUR_USERNAME/saudi-roads-management.git
 
 # رفع الكود
 git push -u origin main
 ```
 
-### الخطوة 3: التحقق
-
-1. افتح repository على GitHub
-2. تأكد من وجود جميع الملفات
-3. ✅ يجب أن ترى:
-   - `/components/` (25+ ملف)
-   - `/styles/globals.css`
-   - `/supabase/functions/server/`
-   - `App.tsx`
-   - `README.md`
+**ملاحظة مهمة:** 
+- ✅ اسم المشروع يجب أن يكون بالإنجليزية فقط (بدون رموز عربية)
+- ✅ تأكد من عدم رفع ملف `.env` للأمان
 
 ---
 
-## 3️⃣ إعداد Supabase
+## 🗄️ الخطوة 2: إعداد قاعدة البيانات Supabase
 
-### الخطوة 1: إنشاء مشروع Supabase
+### 2.1 إنشاء مشروع Supabase جديد
 
-1. افتح [Supabase.com](https://supabase.com)
-2. اضغط **"New Project"**
-3. املأ البيانات:
-   - **Name**: `saudi-roads-system`
-   - **Database Password**: (احفظها في مكان آمن)
-   - **Region**: اختر الأقرب (مثلاً: Singapore)
-4. اضغط **"Create new project"**
-5. انتظر 2-3 دقائق حتى يكتمل الإعداد
+1. اذهب إلى: https://supabase.com
+2. سجل دخول أو أنشئ حساب جديد
+3. اضغط **"New Project"**
+4. املأ البيانات:
+   - **Name:** saudi-roads-management
+   - **Database Password:** اختر كلمة مرور قوية واحفظها!
+   - **Region:** اختر أقرب منطقة (مثل: Frankfurt أو Singapore)
+5. اضغط **"Create new project"**
+6. انتظر 2-3 دقائق حتى يتم إنشاء المشروع
 
-### الخطوة 2: الحصول على المفاتيح
+### 2.2 الحصول على API Keys
 
-1. بعد إنشاء المشروع، اذهب إلى:
-   **Settings** → **API**
+بعد إنشاء المشروع:
 
-2. ستجد:
-   - **Project URL**: `https://xxxxx.supabase.co`
-   - **anon/public key**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
-   - **service_role key**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` (سري جداً!)
+1. اذهب إلى **Settings** → **API**
+2. احفظ المعلومات التالية:
 
-3. انسخ هذه القيم
-
-### الخطوة 3: تحديث ملف info.tsx
-
-افتح `/utils/supabase/info.tsx` وحدّث:
-
-```typescript
-export const projectId = "xxxxx" // من Project URL
-export const publicAnonKey = "eyJhbGc..." // anon key
+```
+Project URL: https://xxxxx.supabase.co
+anon/public key: eyJhbGc...
+service_role key: eyJhbGc... (سري جداً!)
 ```
 
-احفظ الملف وارفعه على GitHub:
+### 2.3 إنشاء جدول المستخدمين
 
-```bash
-git add utils/supabase/info.tsx
-git commit -m "Update Supabase credentials"
-git push
+1. اذهب إلى **SQL Editor**
+2. انسخ والصق هذا الكود:
+
+```sql
+-- إنشاء جدول المستخدمين
+CREATE TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  role TEXT NOT NULL CHECK (role IN ('general_manager', 'project_manager', 'engineer', 'observer')),
+  password_hash TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- إنشاء جدول KV Store
+CREATE TABLE IF NOT EXISTS kv_store_92709448 (
+  key TEXT PRIMARY KEY,
+  value JSONB NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- إضافة index للبحث السريع
+CREATE INDEX IF NOT EXISTS idx_kv_store_key ON kv_store_92709448(key);
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+
+-- إنشاء مستخدم مدير عام افتراضي
+-- كلمة المرور: Admin@123
+INSERT INTO users (email, name, role, password_hash)
+VALUES (
+  'admin@roads.sa',
+  'المدير العام',
+  'general_manager',
+  '$2a$10$X9kqZvJxGqYxQqXqXqXqXuKJ.LPZJxYxYxYxYxYxYxYxYxYxYxYxY'
+)
+ON CONFLICT (email) DO NOTHING;
+
+-- تفعيل Row Level Security
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE kv_store_92709448 ENABLE ROW LEVEL SECURITY;
+
+-- سياسات الوصول
+CREATE POLICY "Allow read access to all users" ON users
+  FOR SELECT USING (true);
+
+CREATE POLICY "Allow all access to kv_store" ON kv_store_92709448
+  USING (true);
 ```
 
-### الخطوة 4: رفع Edge Functions
+3. اضغط **"Run"**
+4. تأكد من ظهور رسالة نجاح
 
-#### تثبيت Supabase CLI:
+### 2.4 إعداد Supabase Storage
+
+1. اذهب إلى **Storage**
+2. اضغط **"Create bucket"**
+3. أنشئ 3 buckets:
+   - **Name:** `make-92709448-projects`
+   - **Public bucket:** ❌ (خاص)
+   - اضغط **"Create bucket"**
+4. كرر نفس الخطوات لـ:
+   - `make-92709448-reports`
+   - `make-92709448-daily-reports`
+
+---
+
+## ☁️ الخطوة 3: رفع Edge Functions إلى Supabase
+
+### 3.1 تثبيت Supabase CLI
 
 ```bash
 # على macOS
 brew install supabase/tap/supabase
 
 # على Windows (PowerShell)
+scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
 scoop install supabase
 
 # على Linux
 brew install supabase/tap/supabase
 ```
 
-#### الربط والرفع:
+### 3.2 تسجيل الدخول والربط
 
 ```bash
 # تسجيل الدخول
 supabase login
 
-# الربط بالمشروع
-supabase link --project-ref YOUR_PROJECT_ID
+# سيفتح متصفح - سجل دخول بحساب Supabase
 
-# رفع Edge Function
-supabase functions deploy make-server-92709448
+# ربط المشروع
+supabase link --project-ref YOUR_PROJECT_REF
+
+# احصل على PROJECT_REF من Supabase Dashboard
+# Settings → General → Reference ID
 ```
 
-### الخطوة 5: إعداد Environment Variables للـ Edge Function
+### 3.3 نشر Edge Functions
 
-1. في Supabase Dashboard، اذهب إلى:
-   **Edge Functions** → **Environment Variables**
+```bash
+# انتقل لمجلد المشروع
+cd /path/to/your/project
 
-2. أضف المتغيرات التالية:
-   ```
-   SUPABASE_URL = https://xxxxx.supabase.co
-   SUPABASE_ANON_KEY = eyJhbGc... (anon key)
-   SUPABASE_SERVICE_ROLE_KEY = eyJhbGc... (service_role key)
-   ```
+# نشر Server Function
+supabase functions deploy make-server-92709448 --no-verify-jwt
 
-3. احفظ التغييرات
+# انتظر حتى تكتمل العملية
+# ستظهر رسالة: ✅ Deployed Function make-server-92709448
+```
 
-### الخطوة 6: إنشاء Storage Bucket (اختياري - سيُنشأ تلقائياً)
+### 3.4 إضافة Environment Variables للـ Edge Function
 
-Edge Function سيُنشئ Bucket تلقائياً عند أول استخدام، لكن يمكنك إنشاؤه يدوياً:
+1. اذهب إلى Supabase Dashboard
+2. **Edge Functions** → **make-server-92709448** → **Settings**
+3. أضف المتغيرات:
 
-1. اذهب إلى **Storage**
-2. اضغط **"New bucket"**
-3. املأ:
-   - **Name**: `make-92709448-roads-files`
-   - **Public**: ❌ (اتركه private)
-4. اضغط **"Create bucket"**
+```
+SUPABASE_URL=https://xxxxx.supabase.co
+SUPABASE_ANON_KEY=eyJhbGc... (anon key)
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGc... (service_role key)
+SUPABASE_DB_URL=postgresql://postgres:[YOUR_PASSWORD]@db.xxxxx.supabase.co:5432/postgres
+```
+
+**للحصول على DATABASE_URL:**
+- **Settings** → **Database** → **Connection string** → **URI**
+- استبدل `[YOUR-PASSWORD]` بكلمة مرور قاعدة البيانات
 
 ---
 
-## 4️⃣ رفع على Vercel
+## 🌐 الخطوة 4: نشر Frontend على Vercel
 
-### الخطوة 1: ربط Vercel بـ GitHub
+### 4.1 إعداد ملف package.json
 
-1. افتح [Vercel.com](https://vercel.com)
-2. اضغط **"Add New Project"**
-3. اضغط **"Import Git Repository"**
-4. اختر **GitHub** وامنح الصلاحيات
-5. اختر `saudi-roads-system` repository
+تأكد من وجود هذه السكريبتات في `package.json`:
 
-### الخطوة 2: إعدادات المشروع
-
-في صفحة الإعداد:
-
-1. **Framework Preset**: اختر `Vite`
-2. **Root Directory**: `.` (اتركه كما هو)
-3. **Build Command**: `npm run build`
-4. **Output Directory**: `dist`
-
-### الخطوة 3: إضافة Environment Variables
-
-في قسم **Environment Variables**، أضف:
-
-```
-VITE_SUPABASE_URL = https://xxxxx.supabase.co
-VITE_SUPABASE_ANON_KEY = eyJhbGc... (anon key فقط)
-```
-
-⚠️ **مهم**: لا تضع `SUPABASE_SERVICE_ROLE_KEY` في Vercel!
-
-### الخطوة 4: Deploy
-
-1. اضغط **"Deploy"**
-2. انتظر 2-3 دقائق
-3. ✅ سيظهر لك:
-   ```
-   🎉 Deployment ready!
-   https://saudi-roads-system.vercel.app
-   ```
-
-### الخطوة 5: إعداد Domain مخصص (اختياري)
-
-1. في Vercel Dashboard، اذهب إلى **Settings** → **Domains**
-2. أضف domain الخاص بك
-3. اتبع التعليمات لتحديث DNS
-
----
-
-## 5️⃣ الاختبار النهائي
-
-### اختبار الموقع المباشر:
-
-1. افتح رابط Vercel: `https://saudi-roads-system.vercel.app`
-
-2. تحقق من:
-   - ✅ الصفحة الرئيسية تفتح
-   - ✅ الألوان السعودية ظاهرة
-   - ✅ الخطوط العربية واضحة
-   - ✅ زر تبديل اللغة يعمل
-   - ✅ الوضع الليلي يعمل
-
-### اختبار تسجيل الدخول:
-
-⚠️ **ملاحظة**: يجب إنشاء مستخدم أولاً عبر API!
-
-#### إنشاء مستخدم تجريبي:
-
-استخدم Postman أو أي أداة API:
-
-```http
-POST https://YOUR_PROJECT_ID.supabase.co/functions/v1/make-server-92709448/signup
-Authorization: Bearer YOUR_ANON_KEY
-Content-Type: application/json
-
+```json
 {
-  "email": "admin@roads.gov.sa",
-  "password": "Admin@123456",
-  "name": "المدير العام",
-  "role": "general_manager"
+  "name": "saudi-roads-management",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  }
 }
 ```
 
-#### تسجيل الدخول:
+### 4.2 إنشاء ملف vercel.json
 
-1. في الموقع، اضغط **"تسجيل الدخول"**
-2. أدخل:
-   - البريد: `admin@roads.gov.sa`
-   - كلمة المرور: `Admin@123456`
-3. ✅ يجب أن تدخل للوحة التحكم
+أنشئ ملف `vercel.json` في المجلد الرئيسي:
 
-### اختبار إنشاء مشروع:
-
-1. اذهب إلى **"المشاريع"**
-2. اضغط **"مشروع جديد"**
-3. املأ جميع الحقول (15 حقل)
-4. احفظ
-5. ✅ يجب أن يظهر Toast أخضر: "تم حفظ المشروع بنجاح"
-6. ✅ يجب أن يظهر المشروع في القائمة
-
-### اختبار التقرير اليومي:
-
-1. اذهب إلى **"التقارير اليومية"**
-2. اختر المشروع الذي أنشأته
-3. اضغط **"تقرير يومي جديد"**
-4. ✅ تحقق من Header الأخضر مع بيانات المشروع التلقائية
-5. املأ الحقول
-6. أضف بند أو أكثر
-7. احفظ
-8. ✅ يجب أن يُحفظ التقرير بنجاح
-
----
-
-## ✅ Checklist النهائي
-
-### قبل الإطلاق الرسمي:
-
-- [ ] ✅ الكود مرفوع على GitHub
-- [ ] ✅ Supabase مُعد ويعمل
-- [ ] ✅ Edge Functions مرفوعة
-- [ ] ✅ Vercel مُعد ويعمل
-- [ ] ✅ Environment Variables محددة
-- [ ] ✅ تسجيل الدخول يعمل
-- [ ] ✅ إنشاء مشروع يعمل
-- [ ] ✅ إنشاء تقرير يعمل
-- [ ] ✅ رفع الملفات يعمل
-- [ ] ✅ جميع الصفحات تفتح
-- [ ] ✅ Dark mode يعمل
-- [ ] ✅ اللغة العربية والإنجليزية تعمل
-- [ ] ✅ Responsive على الهاتف والتابلت
-
----
-
-## 🔧 استكشاف الأخطاء
-
-### مشكلة: "Failed to fetch"
-
-**الحل**:
-1. تأكد من أن Edge Function مرفوعة:
-   ```bash
-   supabase functions list
-   ```
-2. تأكد من Environment Variables في Supabase
-
-### مشكلة: "Invalid API key"
-
-**الحل**:
-1. تحقق من `/utils/supabase/info.tsx`
-2. تأكد من نسخ المفاتيح بشكل صحيح
-3. تأكد من Environment Variables في Vercel
-
-### مشكلة: "Build failed" في Vercel
-
-**الحل**:
-1. تحقق من Build Logs في Vercel
-2. تأكد من:
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-3. تأكد من عدم وجود أخطاء TypeScript
-
-### مشكلة: الخطوط لا تظهر
-
-**الحل**:
-1. تحقق من اتصال الإنترنت (الخطوط من Google Fonts)
-2. افتح Dev Tools → Network → تحقق من تحميل الخطوط
-3. تحقق من `/styles/globals.css` السطر 1-2
-
----
-
-## 📊 المراقبة والصيانة
-
-### Vercel Analytics:
-
-1. في Vercel Dashboard → **Analytics**
-2. تابع:
-   - عدد الزوار
-   - أوقات التحميل
-   - الأخطاء
-
-### Supabase Logs:
-
-1. في Supabase Dashboard → **Edge Functions** → **Logs**
-2. تابع:
-   - API Requests
-   - Errors
-   - Performance
-
-### Backups:
-
-1. في Supabase Dashboard → **Database** → **Backups**
-2. قم بعمل Backup يومي/أسبوعي
-3. احفظ نسخة محلية
-
----
-
-## 🚀 التحديثات المستقبلية
-
-### لإضافة ميزة جديدة:
-
-```bash
-# إنشاء branch جديد
-git checkout -b feature/new-feature
-
-# قم بالتعديلات...
-
-# Commit
-git add .
-git commit -m "Add new feature"
-
-# Push
-git push origin feature/new-feature
-
-# في GitHub، افتح Pull Request
-# بعد المراجعة، قم بـ Merge
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
 ```
 
-Vercel سيقوم بـ Deploy تلقائياً عند كل Push إلى `main` branch!
+### 4.3 النشر على Vercel
+
+#### الطريقة 1: عبر Vercel Dashboard (الأسهل)
+
+1. اذهب إلى: https://vercel.com
+2. سجل دخول أو أنشئ حساب (يمكنك استخدام حساب GitHub)
+3. اضغط **"Add New..."** → **"Project"**
+4. اختر **"Import Git Repository"**
+5. اختر repository الخاص بك: `saudi-roads-management`
+6. اضغط **"Import"**
+
+**إعدادات المشروع:**
+
+```
+Framework Preset: Vite
+Root Directory: ./
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+```
+
+7. أضف **Environment Variables**:
+
+```
+VITE_SUPABASE_URL=https://xxxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGc...
+```
+
+8. اضغط **"Deploy"**
+9. انتظر 2-3 دقائق
+
+#### الطريقة 2: عبر Vercel CLI
+
+```bash
+# تثبيت Vercel CLI
+npm install -g vercel
+
+# تسجيل الدخول
+vercel login
+
+# النشر
+vercel
+
+# اتبع التعليمات:
+# - Set up and deploy? Yes
+# - Which scope? (اختر حسابك)
+# - Link to existing project? No
+# - Project name? saudi-roads-management
+# - Directory? ./
+# - Override settings? No
+
+# سيتم النشر تلقائياً
+```
+
+### 4.4 إضافة Environment Variables
+
+بعد النشر:
+
+1. اذهب إلى Vercel Dashboard
+2. اختر المشروع **"saudi-roads-management"**
+3. اذهب إلى **Settings** → **Environment Variables**
+4. أضف:
+
+```
+Name: VITE_SUPABASE_URL
+Value: https://xxxxx.supabase.co
+Environments: Production, Preview, Development
+
+Name: VITE_SUPABASE_ANON_KEY
+Value: eyJhbGc...
+Environments: Production, Preview, Development
+```
+
+5. اضغط **"Save"**
+6. اذهب إلى **Deployments**
+7. اضغط على آخر deployment
+8. اضغط **"Redeploy"** لتطبيق المتغيرات
 
 ---
 
-## 📞 الدعم
+## 🔐 الخطوة 5: إنشاء ملف info.tsx
 
-إذا واجهت أي مشكلة:
+أنشئ ملف `/utils/supabase/info.tsx`:
 
-1. راجع Documentation في `/`
-2. افتح Issue على GitHub
-3. تواصل مع الدعم الفني
+```typescript
+export const projectId = 'YOUR_PROJECT_ID'; // من Supabase URL: xxxxx.supabase.co
+export const publicAnonKey = 'YOUR_ANON_KEY';
+```
 
----
-
-</div>
-
-## 🎉 تهانينا!
-
-<div align="center">
-
-### ✅ **المشروع الآن مباشر على الإنترنت!**
-
-🌐 **الموقع**: https://saudi-roads-system.vercel.app  
-💾 **GitHub**: https://github.com/YOUR_USERNAME/saudi-roads-system  
-☁️ **Supabase**: https://app.supabase.com/project/YOUR_PROJECT_ID
+**احصل على PROJECT_ID من:**
+- Supabase URL: `https://xxxxx.supabase.co`
+- PROJECT_ID = `xxxxx`
 
 ---
 
-### 🇸🇦 **بالتوفيق!**
+## ✅ الخطوة 6: التحقق من النشر
 
-**نظام إدارة مشاريع الطرق السعودية**  
-**الهيئة العامة للطرق - المملكة العربية السعودية**
+### 6.1 فحص Frontend
 
-</div>
+1. افتح رابط Vercel: `https://saudi-roads-management.vercel.app`
+2. يجب أن تظهر صفحة تسجيل الدخول
+3. جرب تسجيل الدخول:
+   - **Email:** admin@roads.sa
+   - **Password:** Admin@123
+
+### 6.2 فحص Backend
+
+افتح Console في المتصفح (F12):
+
+```javascript
+// اختبار Edge Function
+fetch('https://xxxxx.supabase.co/functions/v1/make-server-92709448/projects', {
+  headers: {
+    'Authorization': 'Bearer YOUR_ANON_KEY'
+  }
+})
+.then(r => r.json())
+.then(console.log)
+```
+
+يجب أن ترى:
+```json
+{
+  "projects": []
+}
+```
+
+### 6.3 فحص Storage
+
+1. جرب إنشاء مشروع جديد
+2. ارفع صورة
+3. تحقق من Supabase Dashboard → Storage
+4. يجب أن تظهر الصورة في bucket المناسب
+
+---
+
+## 🔄 الخطوة 7: التحديثات المستقبلية
+
+### 7.1 تحديث الكود
+
+```bash
+# عدل الكود محلياً
+# ثم:
+git add .
+git commit -m "وصف التحديث"
+git push origin main
+
+# Vercel سيقوم بالنشر تلقائياً!
+```
+
+### 7.2 تحديث Edge Functions
+
+```bash
+# بعد تعديل ملفات /supabase/functions/server/
+supabase functions deploy make-server-92709448 --no-verify-jwt
+```
+
+---
+
+## 🎨 الخطوة 8: إعداد Domain مخصص (اختياري)
+
+### 8.1 عبر Vercel
+
+1. اذهب إلى Project → **Settings** → **Domains**
+2. اضغط **"Add"**
+3. أدخل النطاق: `roads.sa` أو `roads.gov.sa`
+4. اتبع التعليمات لإضافة DNS Records
+
+### 8.2 DNS Records المطلوبة
+
+```
+Type: A
+Name: @
+Value: 76.76.21.21
+
+Type: CNAME
+Name: www
+Value: cname.vercel-dns.com
+```
+
+---
+
+## 🔒 الخطوة 9: إعداد أمان إضافي
+
+### 9.1 تفعيل HTTPS
+
+✅ Vercel يفعل HTTPS تلقائياً
+
+### 9.2 إضافة Rate Limiting
+
+في Supabase Edge Function:
+
+```typescript
+// في /supabase/functions/server/index.tsx
+import { rateLimiter } from 'hono/rate-limiter'
+
+app.use(
+  '*',
+  rateLimiter({
+    windowMs: 15 * 60 * 1000, // 15 دقيقة
+    max: 100, // 100 طلب
+    message: 'Too many requests'
+  })
+)
+```
+
+### 9.3 تحديث كلمة مرور المدير
+
+```sql
+-- في Supabase SQL Editor
+UPDATE users
+SET password_hash = crypt('كلمة_المرور_الجديدة', gen_salt('bf'))
+WHERE email = 'admin@roads.sa';
+```
+
+---
+
+## 📊 الخطوة 10: المراقبة والصيانة
+
+### 10.1 مراقبة Vercel
+
+- **Analytics:** Vercel Dashboard → Analytics
+- **Logs:** Deployments → View Function Logs
+
+### 10.2 مراقبة Supabase
+
+- **Database:** Database → Table Editor
+- **Storage:** Storage → Buckets
+- **Edge Functions:** Edge Functions → Logs
+
+### 10.3 Backup قاعدة البيانات
+
+```bash
+# تحميل backup
+supabase db dump -f backup.sql
+
+# استعادة backup
+supabase db reset
+psql -h db.xxxxx.supabase.co -U postgres -f backup.sql
+```
+
+---
+
+## 🎯 الخلاصة والروابط المهمة
+
+### ✅ بعد إكمال جميع الخطوات:
+
+- ✅ Frontend منشور على: `https://saudi-roads-management.vercel.app`
+- ✅ Backend (Edge Functions) يعمل على Supabase
+- ✅ قاعدة البيانات جاهزة
+- ✅ Storage جاهز لرفع الملفات
+- ✅ تحديثات تلقائية عبر Git
+
+### 🔗 روابط مفيدة:
+
+- **Vercel Dashboard:** https://vercel.com/dashboard
+- **Supabase Dashboard:** https://supabase.com/dashboard
+- **Vercel Docs:** https://vercel.com/docs
+- **Supabase Docs:** https://supabase.com/docs
+
+### 📞 الدعم الفني:
+
+- **Vercel Discord:** https://vercel.com/discord
+- **Supabase Discord:** https://discord.supabase.com
+
+---
+
+## ⚠️ ملاحظات مهمة جداً
+
+1. ✅ **لا تشارك** `service_role_key` أبداً
+2. ✅ **احفظ** كلمة مرور قاعدة البيانات في مكان آمن
+3. ✅ **غير** كلمة مرور المدير الافتراضية فوراً
+4. ✅ **فعّل** Two-Factor Authentication في Vercel و Supabase
+5. ✅ **اعمل backup** دوري لقاعدة البيانات
+
+---
+
+## 🎉 مبروك! المشروع منشور بنجاح!
+
+الآن نظام إدارة مشاريع الطرق السعودية يعمل على الإنترنت ويمكن لفريقك استخدامه من أي مكان! 🚀
