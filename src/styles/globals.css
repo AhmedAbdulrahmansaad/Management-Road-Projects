@@ -1,0 +1,1041 @@
+/* Import Arabic Font - Cairo */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 18px;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  
+  /* Saudi Green & Gold Colors - Light Mode */
+  --primary: #006C35;           /* الأخضر السعودي */
+  --primary-hover: #005028;
+  --primary-light: #00a550;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #FDB714;         /* الذهبي */
+  --secondary-hover: #F5A800;
+  --secondary-light: #FFD046;
+  --secondary-foreground: #000000;
+  
+  --accent-mountain: #2D5016;   /* أخضر الجبال */
+  --accent-mountain-light: #4A7C2E;
+  
+  --muted: #f5f5f5;
+  --muted-foreground: #6b7280;
+  --accent: #006C35;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f9fafb;
+  --switch-background: #cbced4;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --ring: #006C35;
+  --chart-1: #006C35;
+  --chart-2: #FDB714;
+  --chart-3: #2D5016;
+  --chart-4: #84cc16;
+  --chart-5: #a855f7;
+  --radius: 1rem;
+  --sidebar: #f9fafb;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #006C35;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #006C35;
+}
+
+.dark {
+  --background: #0a0e0a;
+  --foreground: #f5f5f5;
+  --card: #152015;
+  --card-foreground: #f5f5f5;
+  --popover: #152015;
+  --popover-foreground: #f5f5f5;
+  
+  /* Saudi Green & Gold Colors - Dark Mode */
+  --primary: #00d46a;           /* أخضر فاتح للداكن */
+  --primary-hover: #00b85a;
+  --primary-light: #00ff7f;
+  --primary-foreground: #000000;
+  
+  --secondary: #FFD046;         /* ذهبي فاتح */
+  --secondary-hover: #FDB714;
+  --secondary-light: #FFF5CC;
+  --secondary-foreground: #000000;
+  
+  --accent-mountain: #4A7C2E;
+  --accent-mountain-light: #6B9D4A;
+  
+  --muted: #1a2618;
+  --muted-foreground: #9ca3af;
+  --accent: #00d46a;
+  --accent-foreground: #000000;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.15);
+  --input: rgba(255, 255, 255, 0.05);
+  --input-background: rgba(255, 255, 255, 0.05);
+  --ring: #00d46a;
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --chart-1: #00d46a;
+  --chart-2: #FFD046;
+  --chart-3: #4A7C2E;
+  --chart-4: #84cc16;
+  --chart-5: #a855f7;
+  --sidebar: #0a0e0a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #00d46a;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #152015;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: rgba(255, 255, 255, 0.15);
+  --sidebar-ring: #00d46a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent-mountain: var(--accent-mountain);
+  --color-accent-mountain-light: var(--accent-mountain-light);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/**
+ * Base typography
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.7;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* ============================================ */
+/* SAUDI MOUNTAIN ROAD BACKGROUNDS */
+/* ============================================ */
+
+@layer utilities {
+  /* Mountain Road Background - Similar to Saudi Arabia Green Mountains */
+  .bg-saudi-mountains {
+    background: 
+      linear-gradient(180deg, rgba(0, 108, 53, 0.95) 0%, rgba(45, 80, 22, 0.9) 50%, rgba(0, 108, 53, 0.85) 100%),
+      radial-gradient(ellipse at 20% 30%, rgba(74, 124, 46, 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 60%, rgba(45, 80, 22, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(0, 108, 53, 0.2) 0%, transparent 60%);
+    background-color: #1a2b1a;
+  }
+
+  .dark .bg-saudi-mountains {
+    background: 
+      linear-gradient(180deg, rgba(10, 14, 10, 0.98) 0%, rgba(21, 32, 21, 0.95) 50%, rgba(10, 14, 10, 0.98) 100%),
+      radial-gradient(ellipse at 20% 30%, rgba(0, 212, 106, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 60%, rgba(74, 124, 46, 0.1) 0%, transparent 50%);
+  }
+
+  /* Winding Road on Mountain */
+  .bg-mountain-road {
+    background-image: 
+      /* Road curve */
+      radial-gradient(ellipse 200px 100px at 50% 80%, rgba(45, 80, 22, 0.3) 0%, transparent 100%),
+      /* Road markings */
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(253, 183, 20, 0.2) 40px,
+        rgba(253, 183, 20, 0.2) 50px
+      );
+    animation: road-wind 8s ease-in-out infinite;
+  }
+
+  /* Green Hills Pattern */
+  .bg-green-hills {
+    background-image: 
+      radial-gradient(ellipse 300px 200px at 25% 100%, rgba(0, 108, 53, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 250px at 75% 100%, rgba(45, 80, 22, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 250px 180px at 50% 100%, rgba(74, 124, 46, 0.1) 0%, transparent 70%);
+  }
+
+  /* Nature Texture */
+  .bg-nature-texture {
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 108, 53, 0.03) 2px,
+        rgba(0, 108, 53, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 2px,
+        rgba(45, 80, 22, 0.02) 2px,
+        rgba(45, 80, 22, 0.02) 4px
+      );
+  }
+
+  /* Saudi Road Mesh */
+  .bg-saudi-mesh {
+    background: 
+      radial-gradient(at 0% 0%, rgba(0, 108, 53, 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(253, 183, 20, 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(45, 80, 22, 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(0, 108, 53, 0.15) 0px, transparent 50%);
+  }
+
+  /* Road Stripes on Green */
+  .bg-road-lines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 80px,
+      rgba(253, 183, 20, 0.15) 80px,
+      rgba(253, 183, 20, 0.15) 100px
+    );
+  }
+
+  /* ============================================ */
+  /* SAUDI HIGHWAY ROAD - Professional 3D Effect */
+  /* ============================================ */
+  
+  /* Asphalt Road Texture */
+  .bg-saudi-highway {
+    position: relative;
+    background: 
+      /* Dark asphalt base */
+      linear-gradient(180deg, 
+        rgba(30, 30, 30, 0.15) 0%, 
+        rgba(40, 40, 40, 0.2) 50%, 
+        rgba(30, 30, 30, 0.15) 100%
+      ),
+      /* Noise texture for asphalt */
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(50, 50, 50, 0.05) 2px,
+        rgba(50, 50, 50, 0.05) 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 2px,
+        rgba(60, 60, 60, 0.03) 2px,
+        rgba(60, 60, 60, 0.03) 4px
+      );
+  }
+
+  /* Highway Road Markings - Perspective View */
+  .bg-highway-lines {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      /* Center yellow divider line (dashed) - animated */
+      repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 60px,
+        rgba(253, 183, 20, 0.8) 60px,
+        rgba(253, 183, 20, 0.8) 100px,
+        transparent 100px,
+        transparent 140px
+      ),
+      /* White side line (solid) - left */
+      linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 20%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.6) 21%,
+        transparent 21%
+      ),
+      /* White side line (solid) - right */
+      linear-gradient(
+        to right,
+        transparent 79%,
+        rgba(255, 255, 255, 0.6) 79%,
+        rgba(255, 255, 255, 0.6) 80%,
+        transparent 80%,
+        transparent 100%
+      ),
+      /* Road edge shadows for 3D effect */
+      linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.3) 0%,
+        transparent 15%,
+        transparent 85%,
+        rgba(0, 0, 0, 0.3) 100%
+      );
+    animation: highway-scroll 3s linear infinite;
+    opacity: 0.7;
+  }
+
+  /* Highway with Golden Lines (Saudi Colors) */
+  .bg-highway-golden {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      /* Golden center dashes */
+      repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 50px,
+        rgba(253, 183, 20, 0.9) 50px,
+        rgba(253, 183, 20, 0.9) 90px,
+        transparent 90px,
+        transparent 120px
+      ),
+      /* White reflective lines */
+      repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 200px,
+        rgba(255, 255, 255, 0.3) 200px,
+        rgba(255, 255, 255, 0.3) 202px,
+        transparent 202px,
+        transparent 400px
+      );
+    animation: highway-scroll 4s linear infinite;
+  }
+
+  /* Perspective Road Effect */
+  .bg-road-perspective {
+    position: absolute;
+    inset: 0;
+    background: 
+      /* Road vanishing to horizon */
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(40, 40, 40, 0.1) 20%,
+        rgba(40, 40, 40, 0.15) 40%,
+        rgba(40, 40, 40, 0.2) 60%,
+        rgba(40, 40, 40, 0.15) 80%,
+        transparent 100%
+      ),
+      /* Side road edges with perspective */
+      radial-gradient(
+        ellipse 120% 100% at 50% 100%,
+        rgba(30, 30, 30, 0.2) 0%,
+        rgba(30, 30, 30, 0.15) 30%,
+        transparent 50%
+      );
+  }
+
+  /* Desert Road with Heat Waves */
+  .bg-desert-road-heat {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(
+        to bottom,
+        rgba(253, 183, 20, 0.05) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(253, 183, 20, 0.05) 100%
+      );
+    animation: heat-wave 4s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  /* Gradient Text Effects */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .text-gradient-secondary {
+    @apply bg-gradient-to-r from-secondary via-secondary-light to-secondary bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .text-gradient-saudi {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent-mountain bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Floating Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 1s infinite;
+  }
+
+  /* Pulse & Glow Effects */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-glow-primary {
+    animation: glow-primary 2s ease-in-out infinite alternate;
+  }
+
+  .animate-glow-secondary {
+    animation: glow-secondary 2s ease-in-out infinite alternate;
+  }
+
+  /* Slide Animations */
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-in-down {
+    animation: slide-in-down 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Fade Animations */
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out;
+  }
+
+  /* Scale Animations */
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-scale-pulse {
+    animation: scale-pulse 1.5s ease-in-out infinite;
+  }
+
+  /* Bounce Animations */
+  .animate-bounce-in {
+    animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .animate-bounce-soft {
+    animation: bounce-soft 2s ease-in-out infinite;
+  }
+
+  /* Rotate Animations */
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-rotate-reverse {
+    animation: rotate-reverse 15s linear infinite;
+  }
+
+  /* Shimmer Effect */
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(253, 183, 20, 0.3),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Wiggle Animation */
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  /* Card Hover Effects */
+  .card-hover-lift {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover-lift:hover {
+    @apply transform -translate-y-3 shadow-2xl;
+  }
+
+  .card-hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover-glow:hover {
+    box-shadow: 
+      0 0 20px rgba(0, 108, 53, 0.3),
+      0 0 40px rgba(0, 108, 53, 0.2),
+      0 20px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Button Effects */
+  .btn-gradient-primary {
+    @apply bg-gradient-to-r from-primary via-primary-light to-primary;
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient-primary:hover {
+    background-position: right center;
+    @apply shadow-lg;
+  }
+
+  .btn-gradient-secondary {
+    @apply bg-gradient-to-r from-secondary via-secondary-light to-secondary;
+    background-size: 200% auto;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient-secondary:hover {
+    background-position: right center;
+    @apply shadow-lg;
+  }
+
+  .btn-hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .btn-hover-lift:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+
+  .btn-hover-lift:active {
+    @apply transform translate-y-0;
+  }
+
+  /* Glass Morphism */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-effect-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Text Shadow Utilities for Better Readability */
+  .text-shadow-strong {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(253, 183, 20, 0.5), 0 0 40px rgba(253, 183, 20, 0.3);
+  }
+
+  /* Responsive utilities */
+  @media (max-width: 640px) {
+    .mobile-hide {
+      @apply hidden;
+    }
+    .mobile-full {
+      @apply w-full;
+    }
+    .mobile-text-sm {
+      @apply text-base;
+    }
+    .mobile-p-4 {
+      @apply p-4;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .tablet-grid-2 {
+      @apply grid-cols-2;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .desktop-grid-3 {
+      @apply grid-cols-3;
+    }
+    .desktop-grid-4 {
+      @apply grid-cols-4;
+    }
+  }
+}
+
+/* ============================================ */
+/* KEYFRAME ANIMATIONS */
+/* ============================================ */
+
+@keyframes road-wind {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes highway-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 140px;
+  }
+}
+
+@keyframes highway-scroll-fast {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100px;
+  }
+}
+
+@keyframes heat-wave {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-2px) scaleY(0.98);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(0) scaleY(1.02);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(2px) scaleY(0.99);
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow-primary {
+  from {
+    box-shadow: 0 0 10px rgba(0, 108, 53, 0.5), 0 0 20px rgba(0, 108, 53, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 108, 53, 0.8), 0 0 30px rgba(0, 108, 53, 0.5);
+  }
+}
+
+@keyframes glow-secondary {
+  from {
+    box-shadow: 0 0 10px rgba(253, 183, 20, 0.5), 0 0 20px rgba(253, 183, 20, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(253, 183, 20, 0.8), 0 0 30px rgba(253, 183, 20, 0.5);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+/* ============================================ */
+/* SCROLLBAR STYLING */
+/* ============================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  border: 2px solid var(--muted);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--secondary), var(--primary));
+}
+
+/* ============================================ */
+/* SELECTION COLORS */
+/* ============================================ */
+
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* ============================================ */
+/* FOCUS STYLES */
+/* ============================================ */
+
+*:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================ */
+/* RESPONSIVE BREAKPOINTS */
+/* ============================================ */
+
+/* Mobile First Approach */
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* ============================================ */
+/* DARK MODE SPECIFIC */
+/* ============================================ */
+
+.dark .bg-road-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 80px,
+    rgba(253, 183, 20, 0.1) 80px,
+    rgba(253, 183, 20, 0.1) 100px
+  );
+}
+
+.dark .bg-saudi-mesh {
+  background: 
+    radial-gradient(at 0% 0%, rgba(0, 212, 106, 0.2) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 208, 70, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(74, 124, 46, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(0, 212, 106, 0.1) 0px, transparent 50%);
+}
